@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">MaxWell architecture</title>
+  <desc id="desc">Three layers: the Next.js client, route handlers and services, and external services including OpenAI, Vercel Postgres, OpenStreetMap, and Clerk.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06111F"/>
+      <stop offset="0.6" stop-color="#081828"/>
+      <stop offset="1" stop-color="#0C2033"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(700 380) rotate(90) scale(520 700)">
+      <stop stop-color="#58DDC8" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#58DDC8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58DDC8"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="760" fill="url(#bg)"/>
+  <rect width="1400" height="760" fill="url(#glow)"/>
+  <rect width="1400" height="760" fill="url(#grid)"/>
+
+  <text x="90" y="78" fill="#58DDC8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="2.4">ARCHITECTURE</text>
+  <text x="90" y="120" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="-1">One flow, three layers.</text>
+  <text x="1310" y="84" text-anchor="end" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6">NEXT.JS 16 · REACT 19 · POSTGRES</text>
+
+  <!-- Client -->
+  <g>
+    <rect x="90" y="150" width="1220" height="142" rx="20" fill="#0B1B2C" fill-opacity="0.82" stroke="#2F5C7F" stroke-opacity="0.75"/>
+    <text x="116" y="178" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.8">CLIENT</text>
+    <text x="116" y="202" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="600">Next.js App Router</text>
+
+    <g font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="500">
+      <rect x="116" y="222" width="150" height="42" rx="10" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.7"/>
+      <circle cx="134" cy="243" r="4" fill="#58DDC8"/>
+      <text x="146" y="248" fill="#DCEEFF">Landing</text>
+
+      <rect x="280" y="222" width="150" height="42" rx="10" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.7"/>
+      <circle cx="298" cy="243" r="4" fill="#6DCFFB"/>
+      <text x="310" y="248" fill="#DCEEFF">Intake</text>
+
+      <rect x="444" y="222" width="140" height="42" rx="10" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.7"/>
+      <circle cx="462" cy="243" r="4" fill="#6DCFFB"/>
+      <text x="474" y="248" fill="#DCEEFF">Chat</text>
+
+      <rect x="598" y="222" width="170" height="42" rx="10" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.7"/>
+      <circle cx="616" cy="243" r="4" fill="#6DCFFB"/>
+      <text x="628" y="248" fill="#DCEEFF">Hospitals</text>
+
+      <rect x="782" y="222" width="170" height="42" rx="10" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.7"/>
+      <circle cx="800" cy="243" r="4" fill="#6DCFFB"/>
+      <text x="812" y="248" fill="#DCEEFF">Referrals</text>
+
+      <rect x="966" y="222" width="160" height="42" rx="10" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.7"/>
+      <circle cx="984" cy="243" r="4" fill="#FFB8CE"/>
+      <text x="996" y="248" fill="#DCEEFF">Memory</text>
+
+      <rect x="1140" y="222" width="144" height="42" rx="10" fill="#0F291F" stroke="#58DDC8" stroke-opacity="0.35"/>
+      <circle cx="1158" cy="243" r="4" fill="#6EE7B7"/>
+      <text x="1170" y="248" fill="#A7F3D0">Clerk</text>
+    </g>
+  </g>
+
+  <!-- Client to server -->
+  <path d="M700 292V344" stroke="#58DDC8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="620" y="307" width="160" height="22" rx="11" fill="#0B1B2C" stroke="#2F5C7F" stroke-opacity="0.7"/>
+  <text x="700" y="322" text-anchor="middle" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.2">FETCH · SSE</text>
+
+  <!-- Server -->
+  <g>
+    <rect x="240" y="350" width="920" height="132" rx="20" fill="#0B1B2C" fill-opacity="0.82" stroke="#2F5C7F" stroke-opacity="0.75"/>
+    <text x="266" y="378" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.8">SERVER</text>
+
+    <rect x="266" y="392" width="400" height="66" rx="12" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.8"/>
+    <text x="288" y="418" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600">Route handlers</text>
+    <text x="288" y="438" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="0.7">/api/intake · /api/chat · /api/hospitals</text>
+
+    <path d="M682 425H724" stroke="#58DDC8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="734" y="392" width="400" height="66" rx="12" fill="#11253B" stroke="#58DDC8" stroke-opacity="0.35"/>
+    <text x="756" y="418" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600">Services + Zod</text>
+    <text x="756" y="438" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="0.7">triage · chat · referrals · memory</text>
+  </g>
+
+  <!-- Server to externals -->
+  <g stroke="#58DDC8" stroke-width="1.3" stroke-opacity="0.55" marker-end="url(#arrow)">
+    <path d="M700 482V506C700 522 220 512 220 548"/>
+    <path d="M700 482V506C700 522 540 512 540 548"/>
+    <path d="M700 482V506C700 522 860 512 860 548"/>
+    <path d="M700 482V506C700 522 1180 512 1180 548"/>
+  </g>
+
+  <!-- External -->
+  <g font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">
+    <rect x="90" y="556" width="260" height="112" rx="16" fill="#0B1B2C" fill-opacity="0.9" stroke="#2F5C7F" stroke-opacity="0.75"/>
+    <circle cx="116" cy="584" r="5" fill="#58DDC8"/>
+    <text x="132" y="589" fill="#EBF6FF" font-weight="600">OpenAI-compatible LLM</text>
+    <text x="116" y="614" fill="#7EA5C2" font-size="10">structured JSON · prompt contracts</text>
+    <text x="116" y="636" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">OPENAI_BASE_URL · OPENAI_MODEL</text>
+
+    <rect x="370" y="556" width="260" height="112" rx="16" fill="#0B1B2C" fill-opacity="0.9" stroke="#2F5C7F" stroke-opacity="0.75"/>
+    <circle cx="396" cy="584" r="5" fill="#6DCFFB"/>
+    <text x="412" y="589" fill="#EBF6FF" font-weight="600">Vercel Postgres</text>
+    <text x="396" y="614" fill="#7EA5C2" font-size="10">profiles · messages · snapshots · notes</text>
+    <text x="396" y="636" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">POSTGRES_URL · versioned schema</text>
+
+    <rect x="650" y="556" width="260" height="112" rx="16" fill="#0B1B2C" fill-opacity="0.9" stroke="#2F5C7F" stroke-opacity="0.75"/>
+    <circle cx="676" cy="584" r="5" fill="#FFB8CE"/>
+    <text x="692" y="589" fill="#EBF6FF" font-weight="600">OpenStreetMap</text>
+    <text x="676" y="614" fill="#7EA5C2" font-size="10">Nominatim geocoding · Overpass search</text>
+    <text x="676" y="636" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">LEAFLET · OSM TILES</text>
+
+    <rect x="930" y="556" width="380" height="112" rx="16" fill="#0B1B2C" fill-opacity="0.9" stroke="#58DDC8" stroke-opacity="0.3"/>
+    <circle cx="956" cy="584" r="5" fill="#6EE7B7"/>
+    <text x="972" y="589" fill="#EBF6FF" font-weight="600">Clerk</text>
+    <text x="956" y="614" fill="#7EA5C2" font-size="10">sessions · protected routes · user profile sync</text>
+    <text x="956" y="636" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">CLERK_SECRET_KEY · middleware</text>
+  </g>
+
+  <path d="M90 704H1310" stroke="#B8DBFF" stroke-opacity="0.12"/>
+  <text x="90" y="730" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.4">TRIAGE-FIRST BY DESIGN · NOT A DIAGNOSIS ENGINE</text>
+  <text x="1310" y="730" text-anchor="end" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.4">DEPLOYED ON VERCEL</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="320" viewBox="0 0 1400 320" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">MaxWell care flow</title>
+  <desc id="desc">Three steps: structured intake, urgency triage, and an actionable care plan.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06111F"/>
+      <stop offset="1" stop-color="#0C2033"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58DDC8"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="320" fill="url(#bg)"/>
+  <rect width="1400" height="320" fill="url(#grid)"/>
+
+  <text x="60" y="46" fill="#58DDC8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="2.2">THE FLOW</text>
+  <text x="1340" y="46" text-anchor="end" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6">TRIAGE BEFORE DIAGNOSIS</text>
+
+  <g>
+    <rect x="60" y="70" width="380" height="196" rx="18" fill="#0B1B2C" fill-opacity="0.9" stroke="#2F5C7F" stroke-opacity="0.8"/>
+    <text x="88" y="106" fill="#58DDC8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6">01 · TELL US</text>
+    <text x="88" y="142" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.6">Symptom intake</text>
+    <text x="88" y="170" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">Age, symptom timeline, red flags,</text>
+    <text x="88" y="190" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">history, and optional vitals.</text>
+    <rect x="88" y="212" width="126" height="28" rx="14" fill="#11253B" stroke="#2F5C7F" stroke-opacity="0.8"/>
+    <text x="151" y="230" text-anchor="middle" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.2">ABOUT 5 MIN</text>
+
+    <path d="M454 168H510" stroke="#58DDC8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="510" y="70" width="380" height="196" rx="18" fill="#0B1B2C" fill-opacity="0.9" stroke="#2F5C7F" stroke-opacity="0.8"/>
+    <text x="538" y="106" fill="#58DDC8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6">02 · TRIAGE</text>
+    <text x="538" y="142" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.6">Urgency, not diagnosis</text>
+    <text x="538" y="170" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">Red, orange, yellow, or green —</text>
+    <text x="538" y="190" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">with the why and what to do next.</text>
+    <g font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600">
+      <rect x="538" y="212" width="56" height="28" rx="14" fill="#2A1118" stroke="#F87171" stroke-opacity="0.4"/>
+      <text x="566" y="230" text-anchor="middle" fill="#FCA5A5">RED</text>
+      <rect x="602" y="212" width="72" height="28" rx="14" fill="#2B1B0E" stroke="#F5A65B" stroke-opacity="0.45"/>
+      <text x="638" y="230" text-anchor="middle" fill="#FCD0A1">ORANGE</text>
+      <rect x="682" y="212" width="72" height="28" rx="14" fill="#2A2410" stroke="#FACC15" stroke-opacity="0.4"/>
+      <text x="718" y="230" text-anchor="middle" fill="#FDE68A">YELLOW</text>
+      <rect x="762" y="212" width="72" height="28" rx="14" fill="#0F291F" stroke="#6EE7B7" stroke-opacity="0.45"/>
+      <text x="798" y="230" text-anchor="middle" fill="#A7F3D0">GREEN</text>
+    </g>
+
+    <path d="M904 168H960" stroke="#58DDC8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="960" y="70" width="380" height="196" rx="18" fill="#0B1B2C" fill-opacity="0.9" stroke="#58DDC8" stroke-opacity="0.3"/>
+    <text x="988" y="106" fill="#58DDC8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6">03 · ACT</text>
+    <text x="988" y="142" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.6">A plan you can use</text>
+    <text x="988" y="170" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">Continue in chat, find nearby care,</text>
+    <text x="988" y="190" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13">or export a doctor-ready referral.</text>
+    <rect x="988" y="212" width="152" height="28" rx="14" fill="#0F291F" stroke="#58DDC8" stroke-opacity="0.35"/>
+    <text x="1064" y="230" text-anchor="middle" fill="#A7F3D0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.1">CARE PLAN · PDF</text>
+  </g>
+
+  <text x="60" y="302" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.4">NO DIAGNOSIS · ESCALATION FIRST · MEMORY YOU CAN EDIT</text>
+  <text x="1340" y="302" text-anchor="end" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.4">RURAL &amp; LOW-RESOURCE SETTINGS</text>
+</svg>

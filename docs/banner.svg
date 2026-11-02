@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1600 560" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">MaxWell — triage-first rural care</title>
+  <desc id="desc">A dark banner with the MaxWell wordmark, the line "The next safest care step, in minutes", triage level pills, and a glass triage-result card.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#05101F"/>
+      <stop offset="0.48" stop-color="#081828"/>
+      <stop offset="1" stop-color="#0C2033"/>
+    </linearGradient>
+    <radialGradient id="blueGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(210 -30) rotate(28) scale(760 460)">
+      <stop stop-color="#4F7FFF" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#4F7FFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tealGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1540 30) rotate(155) scale(560 420)">
+      <stop stop-color="#58DDC8" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#58DDC8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pinkGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1290 560) rotate(-90) scale(560 380)">
+      <stop stop-color="#FFB8CE" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#FFB8CE" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="960" y1="90" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14273C" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#081320" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardLine" x1="960" y1="90" x2="1440" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B8DBFF" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#58DDC8" stop-opacity="0.12"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="560" fill="url(#bg)"/>
+  <rect width="1600" height="560" fill="url(#blueGlow)"/>
+  <rect width="1600" height="560" fill="url(#tealGlow)"/>
+  <rect width="1600" height="560" fill="url(#pinkGlow)"/>
+  <rect width="1600" height="560" fill="url(#grid)"/>
+
+  <g opacity="0.5" stroke="#8DC4E8" stroke-width="1">
+    <path d="M-40 486C110 452 178 512 312 480s184-88 324-58 168 44 304 4 208-70 350-34 196 24 350-18" opacity="0.18"/>
+    <path d="M-40 512C110 478 178 538 312 506s184-88 324-58 168 44 304 4 208-70 350-34 196 24 350-18" opacity="0.12"/>
+  </g>
+
+  <g>
+    <rect x="88" y="78" width="64" height="64" rx="18" fill="#0B1B2C" stroke="#58DDC8" stroke-opacity="0.7" stroke-width="1.5"/>
+    <path d="M104 110h10l7-14 9 28 8-18h14" stroke="#58DDC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="152" cy="122" r="3.5" fill="#FFB8CE"/>
+    <text x="176" y="124" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="-1.5">MaxWell</text>
+    <text x="178" y="146" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="2.4">TRIAGE-FIRST · RURAL CARE</text>
+  </g>
+
+  <text x="88" y="246" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2">The next safest</text>
+  <text x="88" y="306" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2">care step, in minutes.</text>
+  <text x="90" y="350" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="17">Structured intake, urgency triage, nearby care,</text>
+  <text x="90" y="374" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="17">and a doctor-ready handoff — in one flow.</text>
+
+  <g font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">
+    <rect x="90" y="416" width="162" height="34" rx="17" fill="#2A1118" stroke="#F87171" stroke-opacity="0.4"/>
+    <circle cx="108" cy="433" r="4" fill="#F87171"/>
+    <text x="122" y="438" fill="#FCA5A5">Emergency now</text>
+
+    <rect x="266" y="416" width="158" height="34" rx="17" fill="#2B1B0E" stroke="#F5A65B" stroke-opacity="0.45"/>
+    <circle cx="284" cy="433" r="4" fill="#F5A65B"/>
+    <text x="298" y="438" fill="#FCD0A1">Within 24h</text>
+
+    <rect x="438" y="416" width="136" height="34" rx="17" fill="#2A2410" stroke="#FACC15" stroke-opacity="0.4"/>
+    <circle cx="456" cy="433" r="4" fill="#FACC15"/>
+    <text x="470" y="438" fill="#FDE68A">Monitor</text>
+
+    <rect x="588" y="416" width="136" height="34" rx="17" fill="#0F291F" stroke="#6EE7B7" stroke-opacity="0.45"/>
+    <circle cx="606" cy="433" r="4" fill="#6EE7B7"/>
+    <text x="620" y="438" fill="#A7F3D0">Observe</text>
+  </g>
+
+  <ellipse cx="1215" cy="300" rx="290" ry="190" fill="#58DDC8" fill-opacity="0.11" filter="url(#soft)"/>
+
+  <g transform="rotate(-2 1200 290)">
+    <rect x="900" y="94" width="600" height="396" rx="28" fill="url(#card)" stroke="url(#cardLine)" stroke-width="1.5"/>
+    <rect x="900" y="94" width="600" height="396" rx="28" stroke="#FFFFFF" stroke-opacity="0.05"/>
+
+    <text x="936" y="140" fill="#8FB9D8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="2">TRIAGE RESULT</text>
+    <text x="1464" y="140" text-anchor="end" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.5">2 MIN AGO</text>
+
+    <rect x="936" y="160" width="246" height="34" rx="6" fill="#2B1B0E" stroke="#F5A65B" stroke-opacity="0.5"/>
+    <circle cx="954" cy="177" r="4" fill="#F5A65B"/>
+    <text x="968" y="182" fill="#FCD0A1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600" letter-spacing="1.2">DOCTOR WITHIN 24 HOURS</text>
+
+    <text x="936" y="252" fill="#F3FAFF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="-1.4">Fever and a cough</text>
+    <text x="936" y="294" fill="#F3FAFF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="-1.4">that is getting worse</text>
+    <text x="936" y="324" fill="#ABD0EF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="14">Three days of fever, now with a productive cough.</text>
+
+    <path d="M936 348H1464" stroke="#B8DBFF" stroke-opacity="0.14"/>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6">
+      <text x="936" y="376" fill="#7EA5C2">DO NOW</text>
+      <text x="1188" y="376" fill="#7EA5C2">TELL THE DOCTOR</text>
+      <text x="1398" y="376" fill="#7EA5C2">CONFIDENCE</text>
+    </g>
+    <g font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="13" fill="#DCEEFF">
+      <text x="936" y="400">Rest and fluids</text>
+      <text x="936" y="422">Monitor temperature</text>
+      <text x="1188" y="400">3 days of fever</text>
+      <text x="1188" y="422">SpO2 94% · Penicillin allergy</text>
+    </g>
+    <text x="1398" y="402" fill="#58DDC8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="700">82%</text>
+
+    <path d="M936 446H1464" stroke="#B8DBFF" stroke-opacity="0.12"/>
+    <text x="936" y="470" fill="#7EA5C2" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11">Not a diagnosis · escalation-first guidance</text>
+    <text x="1464" y="470" text-anchor="end" fill="#58DDC8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600">Open full plan →</text>
+  </g>
+
+  <g transform="translate(760 492)">
+    <rect x="0" y="0" width="214" height="58" rx="12" fill="#0B1B2C" stroke="#2F5C7F" stroke-opacity="0.8"/>
+    <text x="16" y="22" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.4">NEAREST FACILITY</text>
+    <text x="16" y="40" fill="#EBF6FF" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">District Hospital, Nashik</text>
+    <text x="16" y="53" fill="#7EA5C2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">18 KM · 24 MIN BY ROAD</text>
+  </g>
+  <g transform="translate(988 500)">
+    <rect x="0" y="0" width="146" height="40" rx="10" fill="#0B1B2C" stroke="#2F5C7F" stroke-opacity="0.8"/>
+    <circle cx="18" cy="20" r="4" fill="#58DDC8"/>
+    <text x="32" y="24" fill="#ABD0EF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" letter-spacing="1.2">ROUTE PREVIEW</text>
+  </g>
+
+  <path d="M642 502C720 470 730 404 812 396s88-54 128-74" stroke="#FFB8CE" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <circle cx="642" cy="502" r="5" fill="#58DDC8"/>
+</svg>
