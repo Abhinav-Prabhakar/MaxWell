@@ -122,7 +122,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="card-glass rounded-3xl p-6">
+          <div className="card-glass self-start rounded-3xl p-6">
             <h2 className="mb-4 text-xl font-semibold">Built for action</h2>
             <ul className="space-y-3 text-sm text-cyan-50/80">
               {highlights.map((item) => (
