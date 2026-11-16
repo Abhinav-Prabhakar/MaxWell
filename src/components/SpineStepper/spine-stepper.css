@@ -1,0 +1,15 @@
+.spine-stepper {
+  /* Full-bleed: the drawing is laid out in the pixels of this box, so it is
+     always exactly as tall as whatever it is placed in. */
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: 420px;
+}
+
+.spine-stepper__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}

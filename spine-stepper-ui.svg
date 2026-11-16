@@ -1,0 +1,328 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="900" height="1100"
+     font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- ============ BACKGROUND ============ -->
+    <radialGradient id="bgGrad" cx="38%" cy="38%" r="80%">
+      <stop offset="0" stop-color="#17222e"/>
+      <stop offset="0.45" stop-color="#0b1118"/>
+      <stop offset="1" stop-color="#03050a"/>
+    </radialGradient>
+
+    <radialGradient id="ambientTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.16"/>
+      <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="vig" cx="50%" cy="45%" r="72%">
+      <stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.78"/>
+    </radialGradient>
+
+    <!-- ============ BONE MATERIAL ============ -->
+    <linearGradient id="bodyGrad" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#fdf9f1"/>
+      <stop offset="0.14" stop-color="#efe7d8"/>
+      <stop offset="0.42" stop-color="#dacfbc"/>
+      <stop offset="0.72" stop-color="#b5a995"/>
+      <stop offset="0.92" stop-color="#948876"/>
+      <stop offset="1" stop-color="#7d7261"/>
+    </linearGradient>
+
+    <linearGradient id="wingGrad" x1="0.25" y1="0" x2="0.75" y2="1">
+      <stop offset="0" stop-color="#e8dfce"/>
+      <stop offset="0.42" stop-color="#c1b59f"/>
+      <stop offset="1" stop-color="#756a5a"/>
+    </linearGradient>
+
+    <radialGradient id="litRadial" cx="0.34" cy="0.22" r="0.72">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.62"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="edgeDark" cx="0.5" cy="0.44" r="0.63">
+      <stop offset="0.42" stop-color="#1a130b" stop-opacity="0"/>
+      <stop offset="0.82" stop-color="#1a130b" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#0f0a05" stop-opacity="0.75"/>
+    </radialGradient>
+
+    <linearGradient id="bottomAO" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2015" stop-opacity="0"/>
+      <stop offset="1" stop-color="#1e160d" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- ============ CORD / PROGRESS TUBE ============ -->
+    <linearGradient id="cordFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b6b80"/>
+      <stop offset="0.35" stop-color="#1594ad"/>
+      <stop offset="0.7" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#a5f3fc"/>
+    </linearGradient>
+
+    <!-- ============ CORE NODES ============ -->
+    <radialGradient id="coreDone" cx="0.34" cy="0.28" r="0.78">
+      <stop offset="0" stop-color="#c9fff6"/>
+      <stop offset="0.35" stop-color="#5eead4"/>
+      <stop offset="0.78" stop-color="#22c9b8"/>
+      <stop offset="1" stop-color="#0d8d84"/>
+    </radialGradient>
+
+    <radialGradient id="coreDark" cx="0.34" cy="0.28" r="0.8">
+      <stop offset="0" stop-color="#243343"/>
+      <stop offset="0.7" stop-color="#111c26"/>
+      <stop offset="1" stop-color="#0a1218"/>
+    </radialGradient>
+
+    <radialGradient id="spillTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.5"/>
+      <stop offset="0.45" stop-color="#22d3ee" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="spillHot" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="0.3" stop-color="#67e8f9" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ============ SHAPES ============ -->
+    <path id="bodyPath" d="M-44,-42
+      C-30,-45 -14,-46 0,-46
+      C14,-46 30,-45 44,-42
+      C50,-40 52,-30 52,-18
+      C52,-6 52,8 52,20
+      C52,32 48,42 38,44
+      C24,46 12,47 0,47
+      C-12,47 -24,46 -38,44
+      C-48,42 -52,32 -52,20
+      C-52,8 -52,-6 -52,-18
+      C-52,-30 -50,-40 -44,-42 Z"/>
+
+    <clipPath id="bodyClip">
+      <path d="M-44,-42
+        C-30,-45 -14,-46 0,-46
+        C14,-46 30,-45 44,-42
+        C50,-40 52,-30 52,-18
+        C52,-6 52,8 52,20
+        C52,32 48,42 38,44
+        C24,46 12,47 0,47
+        C-12,47 -24,46 -38,44
+        C-48,42 -52,32 -52,20
+        C-52,8 -52,-6 -52,-18
+        C-52,-30 -50,-40 -44,-42 Z"/>
+    </clipPath>
+
+    <!-- ============ FILTERS ============ -->
+    <filter id="organ" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="9" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="3.4"
+                         xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.92" numOctaves="3" seed="4"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0" intercept="1"/>
+      </feComponentTransfer>
+    </filter>
+
+    <filter id="b4"  x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="b8"  x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="b14" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="b20" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
+
+    <!-- ============ VERTEBRA SYMBOL ============ -->
+    <g id="vert">
+      <!-- contact shadow cast onto the cord -->
+      <ellipse cx="0" cy="18" rx="58" ry="36" fill="#000000" opacity="0.5" filter="url(#b14)"/>
+
+      <g filter="url(#organ)">
+        <!-- spinous process peeking below the body -->
+        <ellipse cx="0" cy="46" rx="25" ry="13" fill="#6b6152"/>
+
+        <!-- transverse processes -->
+        <path d="M-46,-26 C-58,-35 -70,-43 -80,-45
+                 C-89,-46 -93,-39 -88,-31
+                 C-81,-20 -65,-8 -49,-1 Z" fill="url(#wingGrad)"/>
+        <path d="M46,-26 C58,-35 70,-43 80,-45
+                 C89,-46 93,-39 88,-31
+                 C81,-20 65,-8 49,-1 Z" fill="url(#wingGrad)"/>
+
+        <!-- vertebral body -->
+        <use href="#bodyPath" fill="url(#bodyGrad)"/>
+
+        <!-- body shading -->
+        <g clip-path="url(#bodyClip)">
+          <rect x="-62" y="-56" width="124" height="112" fill="url(#litRadial)"/>
+          <rect x="-62" y="-56" width="124" height="112" fill="url(#edgeDark)"/>
+          <rect x="-62" y="8" width="124" height="48" fill="url(#bottomAO)"/>
+
+          <!-- specular highlights -->
+          <ellipse cx="-17" cy="-27" rx="27" ry="10" fill="#ffffff" opacity="0.6" filter="url(#b4)"/>
+          <ellipse cx="-40" cy="-4" rx="7" ry="17" fill="#ffffff" opacity="0.35" filter="url(#b4)"/>
+          <ellipse cx="16" cy="-34" rx="18" ry="5" fill="#ffffff" opacity="0.35" filter="url(#b4)"/>
+
+          <!-- cool bounce light on the right edge -->
+          <path d="M52,-18 C52,-4 52,10 52,24" stroke="#8fd8f5" stroke-width="2.4"
+                fill="none" opacity="0.22" filter="url(#b4)"/>
+
+          <!-- surface porosity -->
+          <rect x="-62" y="-56" width="124" height="112"
+                filter="url(#grain)" opacity="0.2" style="mix-blend-mode:overlay"/>
+        </g>
+
+        <!-- rim light on the transverse processes -->
+        <path d="M-46,-26 C-58,-35 -70,-43 -80,-45" stroke="#fff8ea" stroke-width="1.6"
+              fill="none" opacity="0.38" filter="url(#b4)"/>
+        <path d="M46,-26 C58,-35 70,-43 80,-45" stroke="#fff8ea" stroke-width="1.6"
+              fill="none" opacity="0.3" filter="url(#b4)"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- ================= BACKGROUND ================= -->
+  <rect width="900" height="1100" fill="url(#bgGrad)"/>
+  <ellipse cx="320" cy="600" rx="420" ry="520" fill="url(#ambientTeal)"/>
+
+  <!-- ================= SPINAL CORD / PROGRESS TUBE ================= -->
+  <g id="cord">
+    <rect x="306" y="170" width="28" height="812" rx="14" fill="#080d13"/>
+    <rect x="306" y="170" width="28" height="812" rx="14" fill="none" stroke="#1b2836" stroke-width="1"/>
+    <rect x="309" y="173" width="22" height="806" rx="11" fill="#0c141d"/>
+
+    <!-- filled portion -->
+    <rect x="309" y="173" width="22" height="516" rx="11" fill="url(#cordFill)"/>
+    <rect x="309" y="173" width="22" height="516" rx="11"
+          fill="#22d3ee" opacity="0.45" filter="url(#b14)"/>
+    <rect x="313" y="180" width="3" height="500" rx="1.5" fill="#ffffff" opacity="0.18"/>
+  </g>
+
+  <!-- ================= VERTEBRAE ================= -->
+
+  <!-- C1 — Calibration — complete -->
+  <g transform="translate(320,240) rotate(-1.6) scale(0.92)"><use href="#vert"/></g>
+  <circle cx="320" cy="240" r="62" fill="url(#spillTeal)" style="mix-blend-mode:screen" opacity="0.7"/>
+  <circle cx="320" cy="240" r="17" fill="#2dd4bf" opacity="0.35" filter="url(#b8)"/>
+  <circle cx="320" cy="240" r="12.5" fill="url(#coreDone)"/>
+  <circle cx="320" cy="240" r="12.5" fill="none" stroke="#9df5e6" stroke-width="1.1" opacity="0.9"/>
+  <ellipse cx="316" cy="235" rx="4.5" ry="3" fill="#ffffff" opacity="0.9"/>
+
+  <!-- C2 — Signal mapping — complete -->
+  <g transform="translate(320,352) rotate(1.1) scale(0.94)"><use href="#vert"/></g>
+  <circle cx="320" cy="352" r="62" fill="url(#spillTeal)" style="mix-blend-mode:screen" opacity="0.7"/>
+  <circle cx="320" cy="352" r="17" fill="#2dd4bf" opacity="0.35" filter="url(#b8)"/>
+  <circle cx="320" cy="352" r="12.5" fill="url(#coreDone)"/>
+  <circle cx="320" cy="352" r="12.5" fill="none" stroke="#9df5e6" stroke-width="1.1" opacity="0.9"/>
+  <ellipse cx="316" cy="347" rx="4.5" ry="3" fill="#ffffff" opacity="0.9"/>
+
+  <!-- C3 — Motor cortex sync — complete -->
+  <g transform="translate(320,464) rotate(-0.9) scale(0.96)"><use href="#vert"/></g>
+  <circle cx="320" cy="464" r="62" fill="url(#spillTeal)" style="mix-blend-mode:screen" opacity="0.7"/>
+  <circle cx="320" cy="464" r="17" fill="#2dd4bf" opacity="0.35" filter="url(#b8)"/>
+  <circle cx="320" cy="464" r="12.5" fill="url(#coreDone)"/>
+  <circle cx="320" cy="464" r="12.5" fill="none" stroke="#9df5e6" stroke-width="1.1" opacity="0.9"/>
+  <ellipse cx="316" cy="459" rx="4.5" ry="3" fill="#ffffff" opacity="0.9"/>
+
+  <!-- C4 — Sensory relay — complete -->
+  <g transform="translate(320,576) rotate(1.5) scale(0.98)"><use href="#vert"/></g>
+  <circle cx="320" cy="576" r="62" fill="url(#spillTeal)" style="mix-blend-mode:screen" opacity="0.7"/>
+  <circle cx="320" cy="576" r="17" fill="#2dd4bf" opacity="0.35" filter="url(#b8)"/>
+  <circle cx="320" cy="576" r="12.5" fill="url(#coreDone)"/>
+  <circle cx="320" cy="576" r="12.5" fill="none" stroke="#9df5e6" stroke-width="1.1" opacity="0.9"/>
+  <ellipse cx="316" cy="571" rx="4.5" ry="3" fill="#ffffff" opacity="0.9"/>
+
+  <!-- C5 — Autonomic bridge — ACTIVE -->
+  <g transform="translate(320,688) rotate(-1.1) scale(1.01)"><use href="#vert"/></g>
+  <circle cx="320" cy="688" r="96" fill="url(#spillHot)" style="mix-blend-mode:screen">
+    <animate attributeName="opacity" values="0.85;1;0.85" dur="2.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="320" cy="688" r="30" fill="#22d3ee" opacity="0.4" filter="url(#b14)"/>
+  <circle cx="320" cy="688" r="20" fill="none" stroke="#67e8f9" stroke-width="1.1">
+    <animate attributeName="r" values="16;40" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.65;0" dur="2.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="320" cy="688" r="13.5" fill="#ffffff"/>
+  <circle cx="320" cy="688" r="13.5" fill="none" stroke="#67e8f9" stroke-width="2"/>
+  <ellipse cx="316" cy="683" rx="4.5" ry="3" fill="#ffffff" opacity="0.95"/>
+
+  <!-- C6 — Memory indexing — pending -->
+  <g transform="translate(320,800) rotate(0.8) scale(1.03)" opacity="0.62"><use href="#vert"/></g>
+  <circle cx="320" cy="800" r="11" fill="url(#coreDark)"/>
+  <circle cx="320" cy="800" r="11" fill="none" stroke="#334354" stroke-width="1.4"/>
+
+  <!-- C7 — Full integration — pending -->
+  <g transform="translate(320,912) rotate(-0.7) scale(1.05)" opacity="0.62"><use href="#vert"/></g>
+  <circle cx="320" cy="912" r="11" fill="url(#coreDark)"/>
+  <circle cx="320" cy="912" r="11" fill="none" stroke="#334354" stroke-width="1.4"/>
+
+  <!-- ================= HEADER ================= -->
+  <text x="60" y="80" font-size="10.5" letter-spacing="3.6" fill="#5f7285">SPINAL CORD · STEPPER</text>
+  <text x="60" y="122" font-size="30" font-weight="600" fill="#f1f5f9" letter-spacing="-0.4">Neural Integration</text>
+
+  <text x="840" y="80" font-size="10" letter-spacing="3.2" fill="#5f7285" text-anchor="end">COMPLETE</text>
+  <text x="840" y="118" font-size="27" font-weight="600" fill="#22d3ee" text-anchor="end">4 / 7</text>
+
+  <line x1="60" y1="158" x2="840" y2="158" stroke="#16202b" stroke-width="1"/>
+
+  <!-- ================= STEP LABELS ================= -->
+
+  <!-- C1 -->
+  <line x1="420" y1="240" x2="452" y2="240" stroke="#2dd4bf" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="418" cy="240" r="2.8" fill="#2dd4bf" opacity="0.9"/>
+  <text x="470" y="220" font-size="10" letter-spacing="2.6" fill="#2dd4bf" opacity="0.7">C1</text>
+  <text x="470" y="243" font-size="17" font-weight="600" fill="#dfe8f1">Calibration</text>
+  <text x="470" y="264" font-size="12" fill="#2dd4bf" opacity="0.82">Complete</text>
+
+  <!-- C2 -->
+  <line x1="420" y1="352" x2="452" y2="352" stroke="#2dd4bf" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="418" cy="352" r="2.8" fill="#2dd4bf" opacity="0.9"/>
+  <text x="470" y="332" font-size="10" letter-spacing="2.6" fill="#2dd4bf" opacity="0.7">C2</text>
+  <text x="470" y="355" font-size="17" font-weight="600" fill="#dfe8f1">Signal mapping</text>
+  <text x="470" y="376" font-size="12" fill="#2dd4bf" opacity="0.82">Complete</text>
+
+  <!-- C3 -->
+  <line x1="420" y1="464" x2="452" y2="464" stroke="#2dd4bf" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="418" cy="464" r="2.8" fill="#2dd4bf" opacity="0.9"/>
+  <text x="470" y="444" font-size="10" letter-spacing="2.6" fill="#2dd4bf" opacity="0.7">C3</text>
+  <text x="470" y="467" font-size="17" font-weight="600" fill="#dfe8f1">Motor cortex sync</text>
+  <text x="470" y="488" font-size="12" fill="#2dd4bf" opacity="0.82">Complete</text>
+
+  <!-- C4 -->
+  <line x1="420" y1="576" x2="452" y2="576" stroke="#2dd4bf" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="418" cy="576" r="2.8" fill="#2dd4bf" opacity="0.9"/>
+  <text x="470" y="556" font-size="10" letter-spacing="2.6" fill="#2dd4bf" opacity="0.7">C4</text>
+  <text x="470" y="579" font-size="17" font-weight="600" fill="#dfe8f1">Sensory relay</text>
+  <text x="470" y="600" font-size="12" fill="#2dd4bf" opacity="0.82">Complete</text>
+
+  <!-- C5 — ACTIVE -->
+  <line x1="420" y1="688" x2="452" y2="688" stroke="#67e8f9" stroke-width="1.6" opacity="0.85"/>
+  <circle cx="418" cy="688" r="3.6" fill="#67e8f9"/>
+  <circle cx="418" cy="688" r="8" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.4"/>
+  <text x="470" y="668" font-size="10" letter-spacing="2.6" fill="#67e8f9">C5</text>
+  <text x="470" y="691" font-size="17" font-weight="600" fill="#ffffff">Autonomic bridge</text>
+  <text x="470" y="712" font-size="12" fill="#67e8f9">In progress · 40%</text>
+  <rect x="470" y="722" width="170" height="2.5" rx="1.25" fill="#132029"/>
+  <rect x="470" y="722" width="68" height="2.5" rx="1.25" fill="#22d3ee"/>
+  <rect x="470" y="722" width="68" height="2.5" rx="1.25" fill="#22d3ee" filter="url(#b4)" opacity="0.8"/>
+
+  <!-- C6 -->
+  <line x1="420" y1="800" x2="452" y2="800" stroke="#1e2a36" stroke-width="1.2"/>
+  <circle cx="418" cy="800" r="2.8" fill="#31404f"/>
+  <text x="470" y="780" font-size="10" letter-spacing="2.6" fill="#3f4f60">C6</text>
+  <text x="470" y="803" font-size="17" font-weight="600" fill="#6b7c8d">Memory indexing</text>
+  <text x="470" y="824" font-size="12" fill="#42566a">Pending</text>
+
+  <!-- C7 -->
+  <line x1="420" y1="912" x2="452" y2="912" stroke="#1e2a36" stroke-width="1.2"/>
+  <circle cx="418" cy="912" r="2.8" fill="#31404f"/>
+  <text x="470" y="892" font-size="10" letter-spacing="2.6" fill="#3f4f60">C7</text>
+  <text x="470" y="915" font-size="17" font-weight="600" fill="#6b7c8d">Full integration</text>
+  <text x="470" y="936" font-size="12" fill="#42566a">Pending</text>
+
+  <!-- ================= OVERLAYS ================= -->
+  <rect width="900" height="1100" fill="url(#vig)" pointer-events="none"/>
+  <rect x="16" y="16" width="868" height="1068" rx="22"
+        fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+</svg>

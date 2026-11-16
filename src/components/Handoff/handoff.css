@@ -1,0 +1,1341 @@
+/* ============================================================
+   C8 · Handoff — the visit as a printed sheet under a steel clip,
+   with a desk press beside it. Pressing the stamp inks the record;
+   the paper, the code and the barcode all carry the same number.
+   ============================================================ */
+
+@import '../Intake/intake.css';
+
+/* ---------- the press ---------- */
+
+.press {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 78px;
+  gap: 14px;
+  width: min(604px, 100%);
+  padding: 15px;
+  background:
+    radial-gradient(120% 120% at 18% 0%, #22343e 0%, #13222a 42%, #0a141a 72%, #060d12 100%);
+  border: 1px solid rgba(160, 200, 220, 0.13);
+  border-radius: 18px;
+  box-shadow:
+    0 48px 80px -60px #000,
+    inset 0 1px 0 rgba(220, 244, 255, 0.13),
+    inset 0 -36px 60px -48px #000;
+}
+
+.press::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background: repeating-linear-gradient(92deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 4px);
+  border-radius: inherit;
+  opacity: 0.75;
+}
+
+.press__screw {
+  position: absolute;
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle at 35% 30%, #b7cbd5, #4d636f 58%, #0d1a21);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+.press__screw--tl {
+  top: 7px;
+  left: 7px;
+}
+
+.press__screw--tr {
+  top: 7px;
+  right: 7px;
+}
+
+.press__screw--bl {
+  bottom: 7px;
+  left: 7px;
+}
+
+.press__screw--br {
+  right: 7px;
+  bottom: 7px;
+}
+
+.press__paper {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.press__clip {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  z-index: 5;
+  width: 62px;
+  height: 18px;
+  background: linear-gradient(180deg, #d5e2e9 0%, #93a8b4 38%, #5c7381 70%, #33454f 100%);
+  border-radius: 3px 3px 5px 5px;
+  box-shadow:
+    0 6px 10px -6px #000,
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -2px 3px rgba(10, 25, 35, 0.45);
+  transform: translateX(-50%);
+}
+
+.press__clip::before {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  left: 8px;
+  height: 2px;
+  content: '';
+  background: rgba(10, 25, 35, 0.3);
+  border-radius: 1px;
+}
+
+.press__clip::after {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  content: '';
+  background: radial-gradient(circle at 35% 30%, #eaf5f9, #7b909c 60%, #3a4d58);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+}
+
+/* ---------- the paper ---------- */
+
+.sheet {
+  position: relative;
+  padding: 19px 22px 13px 26px;
+  color: #3a2c12;
+  cursor: default;
+  background:
+    repeating-linear-gradient(92deg, rgba(120, 92, 44, 0.035) 0 1px, transparent 1px 6px),
+    linear-gradient(155deg, #fdf9f0 0%, #f5ebd8 28%, #e9dabc 60%, #d9c7a6 86%, #f5ebd8 100%);
+  border-radius: 3px;
+  box-shadow:
+    0 30px 46px -32px #000,
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 0 0 1px rgba(120, 92, 44, 0.28);
+  transform: rotate(-0.25deg);
+  transition:
+    transform 520ms cubic-bezier(0.22, 0.9, 0.28, 1),
+    box-shadow 400ms ease;
+}
+
+.sheet::before {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 15px;
+  width: 1px;
+  content: '';
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(168, 82, 52, 0.26) 6%,
+    rgba(168, 82, 52, 0.26) 94%,
+    transparent
+  );
+}
+
+.sheet::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.16), transparent 26%, transparent 72%, rgba(255, 255, 255, 0.06));
+  border-radius: inherit;
+}
+
+.press[data-stamped='true'] .sheet {
+  transform: rotate(0deg) translateY(1px);
+  animation: paper-thump 420ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+@keyframes paper-thump {
+  0% {
+    transform: rotate(-0.25deg) translateY(0);
+  }
+  32% {
+    transform: rotate(-0.1deg) translateY(2px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(1px);
+  }
+}
+
+/* ---------- the printed head ---------- */
+
+.hs__top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* the corner is the stamp's; the serial sits clear of it */
+  padding-right: 92px;
+  padding-bottom: 7px;
+  border-bottom: 1.5px solid rgba(80, 58, 22, 0.48);
+}
+
+.hs__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.hs__kicker {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 6.5px;
+  letter-spacing: 2.4px;
+  color: #8a6a2a;
+  text-transform: uppercase;
+}
+
+.hs__clinic {
+  font-size: 12.5px;
+  line-height: 1.15;
+  color: #2e220a;
+}
+
+.hs__visit {
+  font-size: 6.5px;
+  letter-spacing: 1.3px;
+  color: #0e6b78;
+  text-transform: uppercase;
+}
+
+.hs__meta {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+  padding-right: 2px;
+}
+
+.hs__no {
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  color: #2e220a;
+  font-variant-numeric: tabular-nums;
+}
+
+.hs__no i {
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: 0;
+  color: #8a6a2a;
+}
+
+.hs__filed {
+  font-size: 6.5px;
+  letter-spacing: 1.2px;
+  color: #8a6a2a;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hs__route {
+  display: flex;
+  margin: 6px 0 7px;
+}
+
+.hs__stop {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+  align-items: center;
+  font-size: 5.5px;
+  letter-spacing: 0.8px;
+  color: #8a6a2a;
+}
+
+.hs__stop::after {
+  flex: 1;
+  height: 1px;
+  margin: 0 4px;
+  content: '';
+  background: linear-gradient(90deg, rgba(120, 92, 44, 0.3), rgba(120, 92, 44, 0.07));
+}
+
+.hs__stop:last-child {
+  flex: 0;
+}
+
+.hs__stop:last-child::after {
+  display: none;
+}
+
+.hs__stone {
+  width: 5px;
+  height: 5px;
+  background: linear-gradient(135deg, #1d7f92, #a5f3fc 70%);
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(20, 120, 140, 0.45);
+  transform: rotate(45deg);
+}
+
+/* ---------- sections ---------- */
+
+.hs__sec {
+  padding: 6px 0 7px;
+  border-bottom: 1px dashed rgba(120, 92, 44, 0.3);
+}
+
+.hs__label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 6px;
+  letter-spacing: 2.2px;
+  color: #9a7834;
+  text-transform: uppercase;
+}
+
+/* patient */
+
+.hs__id {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.hs__age {
+  font-size: 32px;
+  line-height: 0.85;
+  color: #2b1f08;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hs__age-unit {
+  margin-left: -6px;
+  font-size: 7px;
+  letter-spacing: 1.6px;
+  color: #8a6a2a;
+  text-transform: uppercase;
+}
+
+.hs__sex {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 9px;
+  color: #4a3810;
+}
+
+.hs__prego {
+  padding: 2px 5px;
+  font-size: 6px;
+  letter-spacing: 1.2px;
+  color: #92400e;
+  text-transform: uppercase;
+  border: 1px solid rgba(146, 64, 14, 0.32);
+  border-radius: 2px;
+}
+
+.hs__supports {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+  color: #0e6b78;
+}
+
+.hs__support {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(14, 107, 120, 0.24);
+  border-radius: 50%;
+}
+
+.hs__place {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 7px;
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  color: #8a6a2a;
+  text-transform: uppercase;
+}
+
+.hs__place-dot {
+  width: 4px;
+  height: 4px;
+  background: #b45309;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(180, 83, 9, 0.12);
+}
+
+/* readings */
+
+.hs__vitals {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.hs__vital {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.hs__vital-k {
+  font-size: 5.8px;
+  letter-spacing: 1.4px;
+  color: #9a7834;
+  text-transform: uppercase;
+}
+
+.hs__vital-v {
+  font-size: 15.5px;
+  line-height: 1.1;
+  color: #2b1f08;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.hs__vital-v i {
+  margin-left: 1px;
+  font-size: 6.5px;
+  font-style: normal;
+  color: #8a6a2a;
+}
+
+.hs__vital-bar {
+  height: 2px;
+  margin: 2px 0 1px;
+  background: rgba(120, 92, 44, 0.16);
+  border-radius: 1px;
+}
+
+.hs__vital-bar i {
+  display: block;
+  height: 100%;
+  background: #2a7f8e;
+  border-radius: 1px;
+}
+
+.hs__vital-w {
+  font-size: 5.8px;
+  letter-spacing: 0.9px;
+  color: #9a7834;
+  text-transform: uppercase;
+}
+
+.hs__vital[data-tone='amber'] .hs__vital-bar i {
+  background: #b45309;
+}
+
+.hs__vital[data-tone='rose'] .hs__vital-bar i {
+  background: #b91c1c;
+}
+
+.hs__vital[data-tone='amber'] .hs__vital-w {
+  color: #92400e;
+}
+
+.hs__vital[data-tone='rose'] .hs__vital-w {
+  color: #991b1b;
+}
+
+.hs__vital[data-empty='true'] .hs__vital-v,
+.hs__vital[data-empty='true'] .hs__vital-w {
+  color: #b6a077;
+}
+
+/* symptoms */
+
+.hs__symptoms {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.hs__body {
+  justify-self: center;
+  width: 74px;
+  height: auto;
+}
+
+.hs__body-part {
+  fill: rgba(120, 92, 44, 0.1);
+  stroke: rgba(120, 92, 44, 0.34);
+  stroke-width: 0.8;
+}
+
+.hs__body-lit {
+  fill: #c2711a;
+  fill-opacity: 0.85;
+  stroke: #9a4e0c;
+  stroke-width: 0.5;
+}
+
+.hs__sym {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.hs__areas {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #3a2c12;
+}
+
+.hs__sev {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.hs__sev-cells {
+  display: flex;
+  gap: 1.5px;
+}
+
+.hs__sev-cell {
+  width: 4px;
+  height: 8px;
+  background: rgba(120, 92, 44, 0.16);
+  border-radius: 0.5px;
+}
+
+.hs__sev-cell[data-on='true'] {
+  background: linear-gradient(180deg, #d97706, #9a4e0c);
+}
+
+.hs__sev-word {
+  font-size: 6.5px;
+  letter-spacing: 1px;
+  color: #8a6a2a;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.hs__onset {
+  font-size: 7px;
+  letter-spacing: 0.8px;
+  color: #8a6a2a;
+}
+
+.hs__flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.hs__flag {
+  padding: 1px 4px;
+  font-size: 5.8px;
+  letter-spacing: 0.7px;
+  color: #7c2d12;
+  text-transform: uppercase;
+  border: 1px solid rgba(180, 83, 9, 0.34);
+  border-radius: 2px;
+}
+
+.hs__calm {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 6px;
+  letter-spacing: 1.3px;
+  color: #0f766e;
+  text-transform: uppercase;
+}
+
+.hs__calm::before {
+  width: 4px;
+  height: 4px;
+  content: '';
+  background: #0d9488;
+  border-radius: 50%;
+}
+
+/* history */
+
+.hs__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.hs__chip {
+  padding: 2px 6px;
+  font-size: 6.8px;
+  letter-spacing: 0.5px;
+  color: #4a3810;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(120, 92, 44, 0.32);
+  border-radius: 2px;
+}
+
+.hs__chip[data-tone='med'] {
+  color: #0e5f6b;
+  background: rgba(14, 116, 144, 0.06);
+  border-color: rgba(14, 116, 144, 0.3);
+}
+
+.hs__chip[data-tone='warn'] {
+  color: #923c0c;
+  background: rgba(180, 83, 9, 0.07);
+  border-color: rgba(180, 83, 9, 0.4);
+}
+
+.hs__none {
+  font-size: 7px;
+  letter-spacing: 1.2px;
+  color: #a08a5f;
+  text-transform: uppercase;
+}
+
+/* take home */
+
+.hs__blister {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.hs__dose {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 3px 7px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(120, 92, 44, 0.3);
+  border-radius: 3px;
+}
+
+.hs__pill {
+  width: 13px;
+  height: 7px;
+  background: linear-gradient(180deg, #fffdf6, #e0cfad);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 0.8px rgba(120, 92, 44, 0.35);
+}
+
+.hs__dose b {
+  font-size: 7.8px;
+  font-weight: 500;
+  color: #3a2c12;
+}
+
+.hs__dose-n {
+  font-size: 6.5px;
+  font-style: normal;
+  color: #8a6a2a;
+}
+
+.hs__note {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-top: 5px;
+  font-size: 7px;
+  line-height: 1.3;
+  color: #8a4b0f;
+}
+
+.hs__note::before {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 10px;
+  height: 10px;
+  margin-top: 0.5px;
+  font-size: 7px;
+  font-weight: 700;
+  color: #fff7ed;
+  content: '!';
+  background: #b45309;
+  border-radius: 50%;
+}
+
+/* return + code */
+
+.hs__bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px;
+  gap: 14px;
+  align-items: center;
+  padding: 8px 0 6px;
+}
+
+.hs__plan {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hs__plan .hs__label {
+  margin: 0;
+}
+
+.hs__return {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: baseline;
+}
+
+.hs__return-d {
+  font-size: 15px;
+  color: #2b1f08;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hs__return-w {
+  font-size: 6.5px;
+  letter-spacing: 1.2px;
+  color: #8a6a2a;
+  text-transform: uppercase;
+}
+
+.hs__return-f {
+  font-size: 8px;
+  color: #4a3810;
+}
+
+.hs__tonight {
+  font-size: 7px;
+  color: #8a6a2a;
+}
+
+.hs__code {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+
+.hs__qr {
+  display: block;
+  width: 92px;
+  height: 92px;
+  padding: 3px;
+  background: #f8f1e0;
+  box-shadow: 0 0 0 1px rgba(120, 92, 44, 0.32);
+}
+
+.hs__code-k {
+  font-size: 5.4px;
+  letter-spacing: 1.2px;
+  color: #9a7834;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* footer */
+
+.hs__foot {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-top: 7px;
+  border-top: 1px solid rgba(120, 92, 44, 0.32);
+}
+
+.hs__bars {
+  display: flex;
+  gap: 1px;
+  align-items: stretch;
+  height: 12px;
+  opacity: 0.62;
+}
+
+.hs__bars i {
+  display: block;
+  height: 100%;
+  background: #3a2c12;
+}
+
+.hs__foot-note {
+  margin-left: auto;
+  font-size: 5.2px;
+  letter-spacing: 1.3px;
+  color: #a08a5f;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------- the ink ---------- */
+
+.sheet__stamp {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  color: rgba(146, 64, 14, 0.56);
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transform: rotate(-12deg) scale(1.16);
+  transition:
+    opacity 260ms ease,
+    transform 520ms cubic-bezier(0.2, 0.9, 0.28, 1.2);
+}
+
+.sheet__stamp::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  border: 2.4px solid rgba(146, 64, 14, 0.42);
+  border-radius: 50%;
+}
+
+.sheet__stamp::after {
+  position: absolute;
+  inset: 7px;
+  content: '';
+  border: 1px solid rgba(146, 64, 14, 0.3);
+  border-radius: 50%;
+}
+
+.sheet[data-stamped='true'] .sheet__stamp {
+  opacity: 0.82;
+  transform: rotate(-12deg) scale(1);
+  transition-delay: 170ms;
+}
+
+.sheet__stamp-in {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+  text-align: center;
+  transform: rotate(-3deg);
+}
+
+.sheet__stamp-in b {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.sheet__stamp-in span {
+  font-size: 5.5px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+/* ---------- the press handle ---------- */
+
+.stamp {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  padding: 0;
+  font: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stamp__glow {
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(34, 211, 238, 0.18), transparent 70%);
+  border-radius: 50%;
+  filter: blur(6px);
+  transform: translateX(-50%);
+  animation: stamp-breathe 3.2s ease-in-out infinite;
+}
+
+@keyframes stamp-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.stamp__rod {
+  position: absolute;
+  top: 42px;
+  bottom: 94px;
+  left: 50%;
+  width: 13px;
+  background: linear-gradient(90deg, #293a44, #9db2be 34%, #6a8290 55%, #22323c);
+  border-radius: 7px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 18px -12px #000;
+  transform: translateX(-50%);
+  transition: transform 240ms cubic-bezier(0.3, 0.9, 0.3, 1);
+}
+
+.stamp__ball {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(60% 58% at 34% 26%, #fff2c8 0%, #e8bd6d 34%, #b8853a 68%, #6e4a14 100%);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 -6px 10px rgba(70, 44, 8, 0.55),
+    inset 0 2px 3px rgba(255, 255, 255, 0.55),
+    0 12px 18px -10px #000;
+  transform: translateX(-50%);
+  transition: transform 240ms cubic-bezier(0.3, 0.9, 0.3, 1);
+}
+
+.stamp__ball::after {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  width: 12px;
+  height: 8px;
+  content: '';
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  filter: blur(1px);
+  transform: rotate(-25deg);
+}
+
+.stamp__head {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  width: 60px;
+  height: 34px;
+  background: linear-gradient(180deg, #aebec8 0%, #718793 40%, #3a4e5a 74%, #1b2a34 100%);
+  border-radius: 5px 5px 3px 3px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 14px 20px -12px #000;
+  transform: translateX(-50%);
+  transition: transform 240ms cubic-bezier(0.3, 0.9, 0.3, 1);
+}
+
+.stamp__head::before {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 6px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.38);
+  content: 'FILE';
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.stamp__head::after {
+  position: absolute;
+  right: 6px;
+  bottom: -5px;
+  left: 6px;
+  height: 5px;
+  content: '';
+  background: linear-gradient(180deg, #26343d, #0d151a);
+  border-radius: 0 0 3px 3px;
+}
+
+.stamp__plate {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  width: 70px;
+  height: 28px;
+  background: linear-gradient(180deg, #2a3a44, #101a20);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 14px 28px -18px #000;
+  transform: translateX(-50%);
+}
+
+.stamp__label {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  font-size: 6px;
+  letter-spacing: 2px;
+  color: #6f8696;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.stamp:hover .stamp__ball {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.stamp:hover .stamp__head {
+  box-shadow:
+    0 0 0 1px rgba(103, 232, 249, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 14px 20px -12px #000;
+}
+
+.stamp:focus-visible {
+  outline: none;
+}
+
+.stamp:focus-visible .stamp__head {
+  box-shadow:
+    0 0 0 2px rgba(103, 232, 249, 0.7),
+    0 14px 20px -12px #000;
+}
+
+.stamp[data-stamped='true'] {
+  cursor: default;
+}
+
+.stamp[data-stamped='true'] .stamp__ball,
+.stamp[data-stamped='true'] .stamp__rod {
+  transform: translateX(-50%) translateY(7px);
+}
+
+.stamp[data-stamped='true'] .stamp__head {
+  transform: translateX(-50%) translateY(8px);
+}
+
+.stamp[data-stamped='true'] .stamp__glow {
+  opacity: 0;
+  animation: none;
+}
+
+/* ---------- below the press ---------- */
+
+.handoff__hint {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 14px 0 0;
+  font-size: 8px;
+  letter-spacing: 1.6px;
+  color: #637a8a;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.handoff__hint svg {
+  color: #8fb7c4;
+}
+
+.handoff__done {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 604px;
+  padding: 0 2px;
+  margin: 12px auto 0;
+  animation: rise 500ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.handoff__next {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  padding: 8px 15px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #032029;
+  cursor: pointer;
+  background: linear-gradient(180deg, #c4f7fd 0%, #6ae9fa 46%, #22d3ee 100%);
+  border: 1px solid rgba(165, 243, 252, 0.6);
+  border-radius: 999px;
+  box-shadow:
+    0 10px 26px -14px rgba(34, 211, 238, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 200ms ease;
+}
+
+.handoff__next:hover {
+  background: linear-gradient(180deg, #dcfbff 0%, #8cf1ff 46%, #38ddf7 100%);
+  box-shadow:
+    0 12px 30px -14px rgba(34, 211, 238, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.handoff__next:active {
+  transform: scale(0.985);
+}
+
+.handoff__next:focus-visible {
+  outline: 1px solid #67e8f9;
+  outline-offset: 3px;
+}
+
+.handoff__next svg {
+  transition: transform 240ms cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+.handoff__next:hover svg {
+  transform: translateX(3px);
+}
+
+.handoff__status {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  color: #5eead4;
+  text-transform: uppercase;
+}
+
+.handoff__status svg {
+  color: #2dd4bf;
+}
+
+.handoff__dot {
+  width: 6px;
+  height: 6px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.45);
+  animation: next-pulse 2.8s ease-out infinite;
+}
+
+/* the sheet is tall; give it the room it needs without pushing the action down */
+.handoff .intake__body {
+  padding-top: 22px;
+}
+
+.handoff .q {
+  gap: 16px;
+}
+
+/* ---------- narrow ---------- */
+
+@media (max-width: 640px) {
+  .press {
+    grid-template-columns: minmax(0, 1fr) 50px;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .press__clip {
+    top: -6px;
+    width: 48px;
+    height: 15px;
+  }
+
+  .sheet {
+    padding: 16px 12px 12px 19px;
+  }
+
+  .sheet::before {
+    left: 11px;
+  }
+
+  .hs__top {
+    padding-right: 62px;
+  }
+
+  /* the stamp already carries the date and time */
+  .hs__filed {
+    display: none;
+  }
+
+  .hs__clinic {
+    font-size: 10.5px;
+  }
+
+  .hs__no {
+    font-size: 10.5px;
+  }
+
+  .sheet__stamp {
+    top: 6px;
+    right: 6px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .sheet__stamp-in b {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
+  .sheet__stamp-in span {
+    font-size: 4.6px;
+    letter-spacing: 0.9px;
+  }
+
+  .hs__filed {
+    font-size: 5.5px;
+  }
+
+  .hs__age {
+    font-size: 26px;
+  }
+
+  .hs__vitals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 10px;
+  }
+
+  .hs__symptoms {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .hs__body {
+    width: 60px;
+  }
+
+  .hs__areas {
+    font-size: 9px;
+  }
+
+  .hs__bottom {
+    grid-template-columns: minmax(0, 1fr) 78px;
+    gap: 9px;
+  }
+
+  .hs__return-d {
+    font-size: 13px;
+  }
+
+  .hs__qr {
+    width: 72px;
+    height: 72px;
+  }
+
+  .hs__foot-note {
+    display: none;
+  }
+
+  .sheet__stamp {
+    top: 3px;
+    right: 3px;
+    width: 74px;
+    height: 74px;
+  }
+
+  .sheet__stamp-in b {
+    font-size: 7px;
+    letter-spacing: 1.1px;
+  }
+
+  .sheet__stamp-in span {
+    font-size: 4.4px;
+    letter-spacing: 0.7px;
+  }
+
+  .stamp {
+    min-height: 0;
+  }
+
+  .stamp__rod {
+    top: 34px;
+    bottom: 78px;
+    width: 10px;
+  }
+
+  .stamp__ball {
+    top: 10px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .stamp__ball::after {
+    top: 5px;
+    left: 6px;
+    width: 8px;
+    height: 6px;
+  }
+
+  .stamp__head {
+    bottom: 46px;
+    width: 42px;
+    height: 26px;
+  }
+
+  .stamp__head::before {
+    font-size: 5px;
+    letter-spacing: 1.2px;
+  }
+
+  .stamp__plate {
+    bottom: 18px;
+    width: 46px;
+    height: 24px;
+  }
+
+  .stamp__glow {
+    bottom: 36px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .stamp__label {
+    font-size: 5px;
+    letter-spacing: 1.2px;
+  }
+
+  .handoff__hint {
+    margin-top: 12px;
+    font-size: 7px;
+    letter-spacing: 1.1px;
+  }
+
+  .handoff__done {
+    margin-top: 10px;
+  }
+
+  .handoff__next {
+    padding: 7px 13px;
+    font-size: 10.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press[data-stamped='true'] .sheet {
+    animation: none;
+  }
+
+  .stamp__glow {
+    animation: none;
+  }
+}

@@ -1,0 +1,185 @@
+/* ============================================================
+   The emergency card, shared by every station that can end the
+   visit: C2's red flags and C3's critical vitals.
+   ============================================================ */
+
+/* ---------- the ambulance card ---------- */
+
+.sos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: min(420px, 100%);
+  padding: 26px 24px 22px;
+  text-align: center;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(239, 68, 68, 0.18), rgba(239, 68, 68, 0) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  border-radius: 22px;
+  box-shadow:
+    0 34px 70px -46px #000,
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  animation: rise 560ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.sos__beacon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 2px;
+}
+
+.sos__ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 50%;
+  animation: sos-ring 3.2s cubic-bezier(0.2, 0.7, 0.4, 1) infinite;
+}
+
+.sos__ring:nth-child(2) {
+  animation-delay: 1.6s;
+}
+
+.sos__core {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  color: #fff1f2;
+  background: radial-gradient(circle at 38% 28%, #f87171, #b91c1c 60%, #7f1d1d);
+  border-radius: 50%;
+  box-shadow:
+    0 0 34px rgba(239, 68, 68, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -4px 10px rgba(80, 8, 8, 0.6);
+}
+
+.sos__head {
+  margin: 0;
+  font-size: clamp(22px, 2.1vw, 27px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff5f5;
+}
+
+        .sos__line {
+  max-width: 34ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #fecdd3;
+}
+
+.sos__call {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  padding: 13px 28px;
+  margin-top: 2px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #2a0808;
+  text-decoration: none;
+  background: linear-gradient(180deg, #ffe1e1 0%, #fda4a4 42%, #ef4444 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  box-shadow:
+    0 16px 38px -16px rgba(239, 68, 68, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -2px 6px rgba(120, 12, 12, 0.3);
+  transition:
+    transform 160ms ease,
+    box-shadow 200ms ease,
+    background 200ms ease;
+}
+
+.sos__call:hover {
+  background: linear-gradient(180deg, #fff0f0 0%, #feb6b6 42%, #f25656 100%);
+  box-shadow:
+    0 18px 44px -16px rgba(239, 68, 68, 1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.sos__call:active {
+  transform: scale(0.985);
+}
+
+.sos__call:focus-visible {
+  outline: 1px solid #fecaca;
+  outline-offset: 3px;
+}
+
+.sos__where {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: #b6a5aa;
+}
+
+.sos__clinic {
+  color: #ffe4e6;
+}
+
+.sos__review {
+  padding: 0;
+  font: inherit;
+  font-size: 11px;
+  color: #8b98a5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 200ms ease;
+}
+
+.sos__review:hover {
+  color: #dfe9ef;
+}
+
+.sos__foot {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #fca5a5;
+}
+
+.sos__beacon-dot {
+  width: 6px;
+  height: 6px;
+  background: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+  animation: sos-ping 1.7s ease-out infinite;
+}
+
+
+@keyframes sos-ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 9px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes sos-ring {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.62);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}

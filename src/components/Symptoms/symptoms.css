@@ -1,0 +1,565 @@
+/* ============================================================
+   C2 · Symptoms — a plate, a rule, a column and six switches
+   ============================================================ */
+
+@import '../Intake/intake.css';
+
+/* ---------- the body plate ---------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  align-items: center;
+  width: 100%;
+}
+
+.body__svg {
+  display: block;
+  width: min(238px, 58vw);
+  height: auto;
+  overflow: visible;
+  animation: settle 700ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.zone {
+  cursor: pointer;
+  outline: none;
+}
+
+/* the plate powers up once: a beam passes down the window */
+.plate__scan {
+  animation: plate-scan 2300ms cubic-bezier(0.4, 0, 0.5, 1) 340ms 1 both;
+}
+
+@keyframes plate-scan {
+  0% {
+    opacity: 0;
+    transform: translateY(-46px);
+  }
+  14% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(360px);
+  }
+}
+
+.zone__hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 30;
+  stroke-linecap: round;
+  pointer-events: stroke;
+}
+
+.zone__fill {
+  fill: rgba(103, 232, 249, 0);
+  stroke: rgba(103, 232, 249, 0);
+  stroke-width: 1;
+  transition:
+    fill 240ms ease,
+    stroke 240ms ease;
+}
+
+.zone__edge {
+  fill: none;
+  stroke: rgba(157, 234, 253, 0.16);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  pointer-events: none;
+  transition:
+    stroke 240ms ease,
+    stroke-dasharray 240ms ease;
+}
+
+.zone__limb {
+  fill: none;
+  stroke: rgba(251, 191, 36, 0);
+  stroke-width: 18;
+  stroke-linecap: round;
+  transition: stroke 240ms ease;
+}
+
+.zone[data-hover='true'] .zone__fill {
+  fill: rgba(103, 232, 249, 0.09);
+}
+
+.zone[data-hover='true'] .zone__limb {
+  stroke: rgba(103, 232, 249, 0.12);
+}
+
+.zone[data-hover='true'] .zone__edge {
+  stroke: rgba(165, 243, 252, 0.45);
+}
+
+.zone[data-on='true'] .zone__fill {
+  fill: rgba(251, 191, 36, 0.24);
+  stroke: rgba(253, 224, 120, 0.6);
+  filter: drop-shadow(0 0 7px rgba(251, 191, 36, 0.45));
+}
+
+.zone[data-on='true'] .zone__limb {
+  stroke: rgba(251, 191, 36, 0.42);
+  filter: drop-shadow(0 0 7px rgba(251, 191, 36, 0.4));
+}
+
+.zone[data-on='true'] .zone__edge {
+  stroke: rgba(255, 232, 160, 0.55);
+  stroke-dasharray: none;
+}
+
+.zone:focus-visible .zone__edge {
+  stroke: #67e8f9;
+  stroke-dasharray: 3 3;
+}
+
+.body__all {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 16px 8px 14px;
+  font: inherit;
+  font-size: 9.5px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #8199a9;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.body__all-dot {
+  width: 5px;
+  height: 5px;
+  background: #3c5262;
+  border-radius: 50%;
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.body__all:hover {
+  color: #b7cddb;
+  border-color: rgba(103, 232, 249, 0.25);
+}
+
+.body__all[data-on='true'] {
+  color: #fde9b8;
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.16), rgba(251, 191, 36, 0.04));
+  border-color: rgba(251, 191, 36, 0.45);
+  box-shadow: 0 0 22px -10px rgba(251, 191, 36, 0.7);
+}
+
+.body__all[data-on='true'] .body__all-dot {
+  background: #fbbf24;
+  box-shadow: 0 0 8px #fbbf24;
+}
+
+.body__all:focus-visible {
+  outline: 1px solid #67e8f9;
+  outline-offset: 3px;
+}
+
+/* ---------- the duration rule ---------- */
+
+.rule {
+  width: min(420px, 100%);
+  padding: 2px 0;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.rule__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: settle 700ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.rule:focus-visible {
+  outline: none;
+}
+
+.rule:focus-visible .rule__svg {
+  filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.4));
+}
+
+.rule[data-set='false'] text {
+  opacity: 0.8;
+}
+
+.rule[data-set='false'] .rule__carrier {
+  opacity: 0.5;
+}
+
+/* ---------- the severity column ---------- */
+
+.sev {
+  --sev: #67e8f9;
+  --sev-glow: rgba(103, 232, 249, 0.35);
+
+  display: flex;
+  gap: clamp(14px, 4vw, 40px);
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  cursor: ns-resize;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sev[data-band='1'] {
+  --sev: #5eead4;
+  --sev-glow: rgba(45, 212, 191, 0.32);
+}
+
+.sev[data-band='2'] {
+  --sev: #67e8f9;
+  --sev-glow: rgba(103, 232, 249, 0.36);
+}
+
+.sev[data-band='3'] {
+  --sev: #fbbf24;
+  --sev-glow: rgba(251, 191, 36, 0.4);
+}
+
+.sev[data-band='4'] {
+  --sev: #fb7185;
+  --sev-glow: rgba(251, 113, 133, 0.45);
+}
+
+.sev__svg {
+  display: block;
+  width: min(132px, 34vw);
+  height: auto;
+  overflow: visible;
+  animation: settle 700ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.sev__read {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+}
+
+.sev__num {
+  font-size: clamp(46px, 5vw, 62px);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--sev);
+  text-shadow: 0 0 34px var(--sev-glow);
+  transition:
+    color 320ms ease,
+    text-shadow 320ms ease;
+}
+
+.sev__word {
+  font-size: 9.5px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #7e96a7;
+  transition: color 320ms ease;
+}
+
+.sev[data-set='true'] .sev__word {
+  color: var(--sev);
+  opacity: 0.85;
+}
+
+.sev:focus-visible {
+  outline: none;
+}
+
+/* focus shows on the instrument, not as a box around it */
+.sev:focus-visible .sev__svg {
+  filter: drop-shadow(0 0 7px rgba(103, 232, 249, 0.5));
+}
+
+.sev:focus-visible .sev__num {
+  text-shadow: 0 0 40px var(--sev-glow);
+}
+
+/* ---------- the six switches ---------- */
+
+.flags {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+}
+
+.flags__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  width: min(430px, 100%);
+}
+
+.flag {
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 14px;
+}
+
+.flag--none {
+  grid-column: 1 / -1;
+}
+
+.flag__plate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  padding: 10px 12px 12px;
+  color: #96b3c4;
+  background: linear-gradient(180deg, #16242e, #0b141b 58%, #070e14);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.5),
+    0 14px 22px -18px #000;
+  transition:
+    background 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    transform 200ms cubic-bezier(0.22, 0.9, 0.3, 1),
+    color 280ms ease;
+}
+
+.flag:hover .flag__plate {
+  border-color: rgba(103, 232, 249, 0.24);
+  transform: translateY(-1px);
+}
+
+.flag:active .flag__plate {
+  transform: translateY(0) scale(0.985);
+}
+
+.flag:focus-visible {
+  outline: none;
+}
+
+.flag:focus-visible .flag__plate {
+  outline: 1px solid #67e8f9;
+  outline-offset: 3px;
+}
+
+.flag__glyph {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: #8fb2c4;
+  background: rgba(0, 0, 0, 0.32);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+  transition:
+    color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.flag__label {
+  font-size: 10px;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: #a6c0cf;
+  text-align: center;
+  transition: color 280ms ease;
+}
+
+.flag__lamp {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 5px;
+  height: 5px;
+  background: #243642;
+  border-radius: 50%;
+  transition:
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+/* lit: a warm plate with a red lamp */
+.flag[data-on='true'] .flag__plate {
+  color: #3c2607;
+  background: linear-gradient(180deg, #f7e2ae 0%, #efc679 52%, #d8a349 100%);
+  border-color: rgba(255, 219, 150, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.25),
+    0 16px 34px -16px rgba(251, 191, 36, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -3px 8px rgba(120, 72, 8, 0.35);
+}
+
+.flag[data-on='true'] .flag__glyph {
+  color: #42290a;
+  background: rgba(60, 38, 7, 0.13);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(90, 55, 6, 0.2);
+}
+
+.flag[data-on='true'] .flag__label {
+  font-weight: 600;
+  color: #3c2607;
+}
+
+.flag[data-on='true'] .flag__lamp {
+  background: #dc2626;
+  box-shadow: 0 0 9px #ef4444;
+  animation: lamp 1.9s ease-in-out infinite;
+}
+
+/* "none of these" is the calm one */
+.flag--none[data-on='true'] .flag__plate {
+  color: #06302c;
+  background: linear-gradient(180deg, #d3faf3 0%, #96e9dc 52%, #34cdb9 100%);
+  border-color: rgba(165, 243, 252, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(45, 212, 191, 0.22),
+    0 16px 34px -18px rgba(45, 212, 191, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -3px 8px rgba(8, 86, 78, 0.3);
+}
+
+.flag--none[data-on='true'] .flag__glyph {
+  color: #06302c;
+  background: rgba(6, 48, 44, 0.12);
+}
+
+.flag--none[data-on='true'] .flag__label {
+  font-weight: 600;
+  color: #06302c;
+}
+
+.flag--none[data-on='true'] .flag__lamp {
+  background: #0f766e;
+  box-shadow: none;
+  animation: none;
+}
+
+.flags__sos {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  min-height: 16px;
+  margin: 0;
+  font-size: 11.5px;
+  color: #7b90a0;
+}
+
+.flags__beacon {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  background: #33475a;
+  border-radius: 50%;
+  transition: background 240ms ease;
+}
+
+.flags__sos[data-on='true'] {
+  color: #fca5a5;
+}
+
+.flags__sos[data-on='true'] .flags__beacon {
+  background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+  animation: sos-ping 1.7s ease-out infinite;
+}
+
+.flags__call {
+  font-weight: 600;
+  color: #fecaca;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.flags__call:hover {
+  color: #fff1f2;
+}
+
+.flags__quiet {
+  opacity: 0.72;
+}
+
+
+/* ---------- motion ---------- */
+
+@keyframes lamp {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* ---------- narrow ---------- */
+
+@media (max-width: 640px) {
+  .body__svg {
+    width: min(210px, 56vw);
+  }
+
+  .flag__plate {
+    height: 82px;
+    padding: 8px 10px 10px;
+  }
+
+  .flag__glyph {
+    width: 32px;
+    height: 32px;
+  }
+
+  .flag__label {
+    font-size: 9.5px;
+  }
+
+  .sev {
+    gap: 12px;
+  }
+
+  .sev__svg {
+    width: min(112px, 30vw);
+  }
+
+  .sev__num {
+    font-size: 44px;
+  }
+
+  .sos {
+    padding: 22px 18px 18px;
+  }
+}
